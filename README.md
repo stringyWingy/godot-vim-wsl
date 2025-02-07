@@ -1,5 +1,4 @@
 # Using WSL with Godot
-author: Stringy Wingy
 
 last edited: 02 07 2025
 
