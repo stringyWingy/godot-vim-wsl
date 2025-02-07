@@ -43,7 +43,7 @@ and this beautiful one-liner that solves the problem:
 In Powershell, as administrator (search for Powershell in the start menu, right
 click > "Run as administrator")
 
-```
+```powershell
 New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias
 "vEthernet (WSL)" -Action Allow
 ```
@@ -62,7 +62,7 @@ You can find the ip of the WSL instance from either cmd or bash, using
 labeled "ethernet adapter vEthernet(WSL)". Creating a script to automatically
 spit out this ip is pretty simple in bash:
 
-```
+```bash
 #!/bin/bash
 #~/vim-gd-scripts/wsl-ip.sh
 echo $(ip route | grep default | awk '{print $3}')
@@ -84,7 +84,7 @@ machine. But it will allow WSL to connect to it.
 I was already down the rabbit hole and wrote a script to automatically set the
 ip in the Godot editor settings file
 
-```
+```bash
 #!/bin/bash
 #~/vim-gd-scripts/godot-auto-update-lsp-host.sh
 
@@ -116,7 +116,7 @@ And on the Windows side of things, a batch file to run the above script before
 launching Godot (once again, make sure the path to the script is correct for
 your machine)
 
-```
+```cmd
 wsl -e /root/vim-gd-scripts/godot-auto-update-lsp-host.sh
 Godot_v4.3-stable_win64.exe
 ```
@@ -143,7 +143,7 @@ process running elsewhere. Namely, to tell vim to open up a .gd file when you
 create one or double click one in the editor. You can check your vim's features
 with
 
-```
+```bash
 vim --version
 ```
 
@@ -159,7 +159,7 @@ to use the Xserver for the client-server communication. In order to enable
 source packages, you'll have to go to /etc/apt/sources.list and uncomment all
 the deb-src lines. You can comment them back out later. Then run:
 
-```
+```bash
 apt-get build-dep vim-gtk
 ```
 
@@ -167,25 +167,25 @@ Clone the [vim git repo](https://github.com/vim/vim)
 
 Inside the directory,
 
-```
+```bash
 make distclean
 ./configure --with-features=huge --enable-gui=gtk2
 ```
 
 The console will spit out a ton of stuff. If you scroll back and see `checking
 --enable-gui argument... no GUI support`, something's gone wrong. `make
-distclean`, make sure you have the build dependincies, and configure it again.
+distclean`, make sure you have the build dependencies, and configure it again.
 
 Then,
 
-```
+```bash
 make -j4
 make install
 ```
 
 To compile and install.
 
-```
+```bash
 hash -r
 vim --version
 ```
@@ -201,7 +201,7 @@ complicated having to pass from Windows-world to linux-world. Trying to write
 the whole console command in the Godot settings wasn't working out for me, so I
 ended up with this bash script:
 
-```
+```bash
 #!/bin/bash
 #~/vim-gd-scripts/vim-godot-remote.sh
 unix_path=$(wslpath "$1")
@@ -213,7 +213,7 @@ sure that any spaces in the filepaths get safety quotes, then try to remotely
 open that file in a vim server named "godot". In order to create the vim server,
 run
 
-```
+```bash
 vim --servername godot
 ```
 
@@ -225,7 +225,9 @@ servername "godot"
 Then, in Godot:
 Editor Settings > Text Editor > External:
 >Use External Editor: On
+>
 >Exec Path: wsl
+>
 >Exec Flags: -e /root/vim-gd-scripts/vim-godot-remote.sh {file}
 
 once again, using wsl -e to execute a command inside linux
@@ -247,7 +249,7 @@ walk you through getting coc up and running.](https://github.com/neoclide/coc.nv
 
 Tell .vimrc to look out for .gd files by adding:
 
-```
+```vim
 au BufRead,BufNewFile *.gd	set filetype=gdscript
 ```
 
@@ -258,7 +260,7 @@ the following to the coc config will tell coc how to connect to the Godot lsp.
 writing, the coc wiki entry on Godot has an outdated port number. Godot defaults
 to 6005, not 6008.**
 
-```
+```bash
 "languageserver": {
     "godot": {
       "host": "127.0.0.1",
@@ -271,7 +273,7 @@ to 6005, not 6008.**
 However, the "host" property will have to be set dynamically, which can be done
 by calling coc#config() in a vimscript:
 
-```
+```vim
 "automatically sets the host ip for the godot server
 let g:wsl_ip = trim(system("~/vim-gd-scripts/wsl-ip.sh"))
 call coc#config("languageserver", {
@@ -285,7 +287,7 @@ call coc#config("languageserver", {
 This can go right into your .vimrc, after any coc setup, or in a separate file
 that gets sourced by .vimrc
 
-```
+```vim
 "whatever other coc setup scripts go first
 source ~/.vim/coc-settings.vim
 "then dynamically set the godot server host
