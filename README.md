@@ -16,10 +16,10 @@ and tmux, and wanted to find a solution that would enable that workflow on my
 Windows desktop. Hopefully it helps you.
 
 ## Contents
-1. [The Network / Firewall](#The-Network---Firewall)
+1. [The Network / Firewall](#The-Network--Firewall)
 2. [Getting The Host Ip](#Getting-The-Host-Ip)
 3. [Setting Up Godot](#Setting-Up-Godot)
-4. [Recompiling Vim With +clientserver](#Recompiling-Vim-With--clientserver)
+4. [Recompiling Vim With +clientserver](#Recompiling-Vim-With-clientserver)
 5. [Opening Files in Vim From Godot](#Opening-Files-in-Vim-From-Godot)
 6. [Connecting To Godot LSP From Coc](#Connecting-To-Godot-LSP-From-Coc)
 
