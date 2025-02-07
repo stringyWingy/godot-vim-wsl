@@ -69,7 +69,7 @@ echo $(ip route | grep default | awk '{print $3}')
 ```
 In Godot's Editor Settings > Network > Language Server, this is what you'd want
 to set as the "Remote Host" so that WSL can access it. It's also the ip address
-you'd want to point your editor to. The tricky thing is that this ip changes
+you'd want to point your editor to. The tricky thing is that this ip may change
 every time you reboot. 
 
 ---
