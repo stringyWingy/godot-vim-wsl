@@ -36,7 +36,7 @@ its VM is considered a different machine connected to a different network
 adapter.
 
 After quite some digging, [I found this github
-issue][https://github.com/microsoft/WSL/issues/4585#issuecomment-610061194]
+issue](https://github.com/microsoft/WSL/issues/4585#issuecomment-610061194)
 regarding the quirks of the default settings of WSL's virtual network interface,
 and this beautiful one-liner that solves the problem:
 
@@ -163,7 +163,7 @@ the deb-src lines. You can comment them back out later. Then run:
 apt-get build-dep vim-gtk
 ```
 
-Clone the [vim git repo][https://github.com/vim/vim]
+Clone the [vim git repo](https://github.com/vim/vim)
 
 Inside the directory,
 
@@ -220,7 +220,7 @@ vim --servername godot
 This will launch a normal vim session, but will listen to --remote commands to the
 servername "godot"
 
-[More info on vim remote][https://vimdoc.sourceforge.net/htmldoc/remote.html]
+[More info on vim remote](https://vimdoc.sourceforge.net/htmldoc/remote.html)
 
 Then, in Godot:
 Editor Settings > Text Editor > External:
@@ -243,7 +243,7 @@ background vim process and start a new vim with `--servername godot`
 
 ## Connecting To Godot LSP From Coc
 My .vimrc includes the example coc .vimrc, tweaked to taste. [I'm not gonna
-walk you through getting coc up and running.][https://github.com/neoclide/coc.nvim?tab=readme-ov-file]
+walk you through getting coc up and running.](https://github.com/neoclide/coc.nvim?tab=readme-ov-file)
 
 Tell .vimrc to look out for .gd files by adding:
 
@@ -252,7 +252,7 @@ au BufRead,BufNewFile *.gd	set filetype=gdscript
 ```
 
 As per the [coc
-docs][https://github.com/neoclide/coc.nvim/wiki/Language-servers#godot], Adding
+docs](https://github.com/neoclide/coc.nvim/wiki/Language-servers#godot), Adding
 the following to the coc config will tell coc how to connect to the Godot lsp.
 (`:CocConfig` from inside vim quickly opens the file). **NOTE:As of this
 writing, the coc wiki entry on Godot has an outdated port number. Godot defaults
