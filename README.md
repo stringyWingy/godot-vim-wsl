@@ -43,8 +43,7 @@ In Powershell, as administrator (search for Powershell in the start menu, right
 click > "Run as administrator")
 
 ```powershell
-New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias
-"vEthernet (WSL)" -Action Allow
+New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEthernet (WSL)" -Action Allow
 ```
 
 This creates a firewall rule to allow all ""incoming" network traffic from the
